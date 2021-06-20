@@ -58,11 +58,20 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
         
 		if(!empty($medicines) || !empty($tests) )
 		{
-
+      $query1 ="select * from prescription where PATIENT_ID='$patientid' limit 1";
+      $preResult=mysqli_query($con, $query1);
 			//save to database
+      if($preResult && mysqli_num_rows($preResult) > 0)
+      {
+
+      	$query = "update prescription set MEDICINES='$medicines',DOSAGE='$dosage',TEST_NAME='$tests' where OP_ID=$op_id";
+             
+      
+      }
+      else{
+        $query = "insert into prescription (OP_ID,PATIENT_ID,MEDICINES,DOSAGE,TEST_NAME) values ('$op_id','$patientid','$medicines','$dosage','$tests')";
+      }
 		
-			$query = "insert into prescription (OP_ID,PATIENT_ID,MEDICINES,DOSAGE,TEST_NAME)
-             values ('$op_id','$patientid','$medicines','$dosage','$tests')";
 
 			mysqli_query($con, $query);
 
@@ -133,6 +142,9 @@ display: block;
   border: 1px solid #ccc;
   border-top: none;
 }
+.container{
+        color:black;
+}
 
 
 .tabcontent {
@@ -164,11 +176,11 @@ table,th, td{
         }
     </script>
 </head>
-<body class="hero" background="images/.jpeg">
+<body class="hero" background="images/yaggu.jpg">
   
     <div class="container"> 
         <div class="row">  
-           
+            
              <div class="col-sm-10">
             <div class="tab">
                 <button class="tablinks" onclick="openTab(event, 'Profile')">Profile</button>

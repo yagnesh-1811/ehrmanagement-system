@@ -59,13 +59,46 @@ if($_SERVER['REQUEST_METHOD'] == "GET")
       border: 1px  solid;
       padding : 10px 10px;
       }
+      .container{
+        color:orange;
+      }
+      .docname{
+        color:orange;
+      }
+      .yag{
+        color:orange;
+      }
+
+      .button {
+        display: inline-block;
+        padding: 10px 25px;
+        width:150px;
+        text-align: center;
+        text-decoration: none;
+        color:black;
+        background-color:orange;
+        border-radius: 2px;
+        outline: none;
+        font-weight: bolder;
+      }
      
     </style>
 </head>
 
-<body class="hero" background="images/.jpg">
-  <center><h1>DOCTOR'S PAGE</h1></center>
+<body class="hero" background="images/doctor.jpg">
+<div class=row>
+<div class="col-sm-4"></div>
+<div class="col-sm-6">
+<center><h1 class="yag">DOCTOR'S PAGE</h1></center>
+</div>
+<div class="col-sm-2">
+   <a class="button" href="/hospital/login.php">LOGOUT</a>
+   </div>             
+          
+</div>
+  
   <h3 class="docname">DOCTOR'S NAME: <?php echo $doc_data['USERNAME']; ?></h3>
+  
     <div class="container"> 
         <div class="row">  
             <div class="col-sm-10">
@@ -86,7 +119,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET")
                    <td> '.$user_data['NAME'].' </td>
                    <td> '.$user_data['BOOKED_DATE'].' </td>
                    <td>
-                   <a href="/hospital/details.php?patient='.$user_data['PATIENT_ID'].'" target="_blank">View Details</a>
+                   <a class="yag" href="/hospital/details.php?patient='.$user_data['PATIENT_ID'].'" target="_blank">View Details</a>
                    </td>
                    <tr>
                    <br>
